@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NGO DASHBOARD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      max-width: 300px;
+      margin: 20px auto 0;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-content {
+      text-align: center;
+    }
+
+    .card-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .card-description {
+      font-size: 16px;
+      color: #777;
+      margin-bottom: 20px;
+    }
+
+    .card-options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card-option {
+      margin-bottom: 10px;
+      padding: 12px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .card-option:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.1);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    .card-option:hover {
+      background-color: transparent;
+      transform: translateY(-2px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-option:hover:before {
+      opacity: 1;
+    }
+
+    .card-option i {
+      transition: transform 0.3s ease;
+    }
+
+    .card-option:hover i {
+      transform: rotate(360deg);
+    }
+
+    .card-option .card-option-label {
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s ease;
+    }
+
+    .card-option .card-option-label:before,
+    .card-option .card-option-label:after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #fff;
+      transition: width 0.3s ease;
+    }
+
+    .card-option .card-option-label:before {
+      right: 0;
+    }
+
+    .card-option .card-option-icon {
+      transition: color 0.3s ease;
+    }
+
+    .card-option .card-option-icon:before,
+    .card-option .card-option-icon:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -2px;
+      width: 2px;
+      height: 0;
+      background-color: #fff;
+      transition: height 0.3s ease;
+    }
+
+    .card-option .card-option-icon:before {
+      bottom: 0;
+      right: -2px;
+    }
+
+    .card-option:hover .card-option-label:before,
+    .card-option:hover .card-option-label:after {
+      width: 100%;
+    }
+
+    .card-option:hover .card-option-icon:before,
+    .card-option:hover .card-option-icon:after {
+      height: 100%;
+    }
+
+    .card-option:hover .card-option-label {
+      color:black;
+    }
+
+    .card-option:hover .card-option-icon {
+      color: #ff6347;
+    }
+
+    .card-option:hover:before {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .card-option:hover .card-option-icon:before,
+    .card-option:hover .card-option-icon:after {
+      background-color: #ff6347;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-image">
+      <img src="dhulikona_icon.jpeg" alt="NGO Icon">
+    </div>
+    <div class="card-content">
+      <h3 class="card-title">Dhulikona</h3>
+      <p class="card-description">Manage water-related tasks and options</p>
+      <div class="card-options">
+        <button class="card-option" onclick="redirectToRandomPage('#issues')">
+          <i class="fas fa-exclamation-circle card-option-icon"></i>
+          <span class="card-option-label">Show Issues</span>
+        </button>
+        <button class="card-option" onclick="redirectToRandomPage('#water-supply')">
+          <i class="fas fa-tint card-option-icon"></i>
+          <span class="card-option-label">Show Water Supply</span>
+        </button>
+        <button class="card-option" onclick="redirectToRandomPage('#water-quality')">
+          <i class="fas fa-chart-line card-option-icon"></i>
+          <span class="card-option-label">Show Water Quality History</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function redirectToRandomPage(anchor) {
+      window.location.href = window.location.pathname + anchor;
+    }
+  </script>
+</body>
+</html>
+

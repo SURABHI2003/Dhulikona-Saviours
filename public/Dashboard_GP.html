@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gram Panchayat Information</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown select {
+      padding: 10px;
+      font-size: 18px;
+      width: 400px; 
+      border: none;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .dropdown select:hover {
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .dropdown-option {
+      padding: 10px;
+      height: 40px;
+      line-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: #555;
+      font-weight: bold;
+    }
+
+    .dropdown-option:hover {
+      background-color: #f9f9f9;
+    }
+
+    .submit-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: #1abc9c;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #148f77;
+      transform: scale(1.05);
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .issues-text {
+      text-align: center;
+      background-color: #f44336;
+      color: #fff;
+      font-size: 24px;
+      padding: 10px;
+      margin: 20px auto;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    
+    label {
+      font-weight: bold;
+      font-size: 18px;
+      margin-right: 10px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      color: #333;
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      color: #1abc9c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gram Panchayat Information</h1>
+
+  <label for="grampanchayat">Select Gram Panchayat:</label>
+  <div class="dropdown">
+    <select id="grampanchayat">
+      <option value="">-- Select --</option>
+      <option value="gram1" class="dropdown-option">Gram Panchayat 1</option>
+      <option value="gram2" class="dropdown-option">Gram Panchayat 2</option>
+      <option value="gram3" class="dropdown-option">Gram Panchayat 3</option>
+      
+    </select>
+  </div>
+
+  <br><br>
+
+  <label for="view">Select what you want to see:</label>
+  <div class="dropdown">
+    <select id="view">
+      <option value="">-- Select --</option>
+      <option value="issues" class="dropdown-option">Issues</option>
+      <option value="water-checkup" class="dropdown-option">Water Checkup Data</option>
+    </select>
+  </div>
+
+  <br><br>
+
+  <button type="submit" class="submit-btn" onclick="submitForm()">Submit</button>
+
+  <div class="issues-text">
+    The following issues need to be resolved ASAP
+  </div>
+</body>
+</html>

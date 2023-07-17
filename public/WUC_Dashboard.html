@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Table Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #337ab7;
+      font-family: "Courier New", monospace;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    td {
+      background-color: #fff;
+      transition: background-color 0.3s ease;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover td {
+      background-color: #ddd;
+    }
+
+    button {
+      padding: 8px 15px;
+      font-size: 14px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button.raise-button:hover {
+      background-color: red;
+    }
+
+    td:hover {
+      background-color: #f9f9f9;
+    }
+
+    td:hover button {
+      background-color: #45a049;
+    }
+
+    tr:hover .value {
+      color: #ff6347;
+    }
+  </style>
+</head>
+<body>
+  <h2>Water User Committee</h2>
+  <table>
+    <tr>
+      <th>Serial No</th>
+      <th>Date</th>
+      <th>Village</th>
+      <th>Issue No</th>
+      <th>Raise Issue</th>
+    </tr>
+    <tr>
+      <td><span class="value">1</span></td>
+      <td><span class="value">2023-07-15</span></td>
+      <td><span class="value">Village A</span></td>
+      <td><span class="value">123</span></td>
+      <td><button class="raise-button">Raise Issue</button></td>
+    </tr>
+    <tr>
+      <td><span class="value">2</span></td>
+      <td><span class="value">2023-07-16</span></td>
+      <td><span class="value">Village B</span></td>
+      <td><span class="value">456</span></td>
+      <td><button class="raise-button">Raise Issue</button></td>
+    </tr>
+    <tr>
+      <td><span class="value">3</span></td>
+      <td><span class="value">2023-07-17</span></td>
+      <td><span class="value">Village C</span></td>
+      <td><span class="value">789</span></td>
+      <td><button class="raise-button">Raise Issue</button></td>
+    </tr>
+  </table>
+</body>
+</html>

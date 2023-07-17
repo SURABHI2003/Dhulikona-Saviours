@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+      cursor: pointer;
+      color: #333;
+      font-weight: bold;
+    }
+    
+    input[type="text"],
+    input[type="radio"] {
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    
+    input[type="radio"] {
+      margin-top: 5px;
+    }
+    
+    img {
+      display: block;
+      margin-bottom: 10px;
+      max-width: 240px; 
+      height: auto;
+      object-fit: contain;
+    }
+    
+    button[type="submit"] {
+      display: block;
+      margin: 0 auto;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
+    }
+    
+    button[type="submit"]:active {
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+<body>
+  <h2 id="formHeading">User Form</h2>
+  <form>
+    <label for="village">Village Name:</label>
+    <input type="text" id="village" name="village" required>
+
+    <label for="scheme">Scheme ID:</label>
+    <input type="text" id="scheme" name="scheme" required>
+
+    <div>
+      <label>
+        <img src="nowatersupply.png" alt="No Water" width="200" height="200">
+        No Water Supply<input type="radio" id="noWater" name="waterStatus" value="noWater" required>
+      </label>
+    </div>
+
+    <div>
+      <label>
+        <img src="dirtywater.png" alt="Dirty Water" width="250" height="250">
+        Dirty Water Supply<input type="radio" id="dirtyWater" name="waterStatus" value="dirtyWater" required>
+      </label>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <button id="translateButton">অসমীয়াত অনুবাদ কৰক</button>
+
+  <script>
+    const translateButton = document.getElementById('translateButton');
+    const labels = document.querySelectorAll('label');
+    const buttonText = document.querySelector('button[type="submit"]');
+    const formHeading = document.getElementById('formHeading');
+
+    const translations = {
+      'Village Name:': 'গাঁওৰ নাম:',
+      'Scheme ID:': 'স্কীম আইডি:',
+      'No Water Supply': {
+        text: 'পানি সপ্লাই নাই',
+        imgSrc: 'nowatersupply.png'
+      },
+      'Dirty Water Supply': {
+        text: 'মলিন পানি সপ্লাই',
+        imgSrc: 'dirtywater.png'
+      },
+      'Submit': 'জমা দিন',
+      'User Form': 'ব্যবহারকাৰীৰ ফৰ্ম'
+    };
+
+    translateButton.addEventListener('click', () => {
+      if (translateButton.innerText === 'অসমীয়াত অনুবাদ কৰক') {
+        translateButton.innerText = 'Translate to English';
+        translateToAssamese();
+      } else {
+        translateButton.innerText = 'অসমীয়াত অনুবাদ কৰক';
+        translateToEnglish();
+      }
+    });
+
+    function translateToAssamese() {
+      labels.forEach(label => {
+        const translation = translations[label.textContent.trim()];
+        if (translation) {
+          if (label.querySelector('img')) {
+            const imgSrc = label.querySelector('img').src;
+            const htmlFor = label.getAttribute('for');
+            const radio = label.querySelector('input[type="radio"]');
+            label.innerHTML = `
+              <img src="${translation.imgSrc}" alt="${translation.text}" width="200" height="200">
+              ${translation.text}
+              <input type="radio" id="${htmlFor}" name="${radio.getAttribute('name')}" value="${radio.getAttribute('value')}" required>`;
+          } else {
+            label.textContent = translation;
+          }
+        }
+      });
+
+      const buttonTranslation = translations[buttonText.textContent.trim()];
+      if (buttonTranslation) {
+        buttonText.textContent = buttonTranslation;
+      }
+
+      const headingTranslation = translations[formHeading.textContent.trim()];
+      if (headingTranslation) {
+        formHeading.textContent = headingTranslation;
+      }
+    }
+
+    function translateToEnglish() {
+      labels.forEach(label => {
+        const translatedText = getKeyByValue(translations, label.textContent.trim());
+        if (translatedText) {
+          if (label.querySelector('img')) {
+            const imgSrc = label.querySelector('img').src;
+            const htmlFor = label.getAttribute('for');
+            const radio = label.querySelector('input[type="radio"]');
+            label.innerHTML = `
+              <img src="${imgSrc}" alt="${translatedText}" width="200" height="200">
+              ${translatedText}
+              <input type="radio" id="${htmlFor}" name="${radio.getAttribute('name')}" value="${radio.getAttribute('value')}" required>`;
+          } else {
+            label.textContent = translatedText;
+          }
+        }
+      });
+
+      const buttonTranslatedText = getKeyByValue(translations, buttonText.textContent.trim());
+      if (buttonTranslatedText) {
+        buttonText.textContent = buttonTranslatedText;
+      }
+
+      const headingTranslatedText = getKeyByValue(translations, formHeading.textContent.trim());
+      if (headingTranslatedText) {
+        formHeading.textContent = headingTranslatedText;
+      }
+    }
+
+    function getKeyByValue(object, value) {
+      return Object.keys(object).find(key => {
+        if (typeof object[key] === 'object') {
+          return object[key].text === value;
+        }
+        return object[key] === value;
+      });
+    }
+  </script>
+</body>
+</html>
